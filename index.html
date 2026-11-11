@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#100d26" />
+  <link rel="icon" href="data:," />
+  <title>Starling Hollow — a pocket dungeon story</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="wordmark" href="#" aria-label="Starling Hollow home"><span class="brand-mark">✳</span><span>STARLING <i>HOLLOW</i></span></a>
+      <div class="chapter"><span class="chapter-dot"></span> CHAPTER 01 <b>·</b> THE HUMMING BELOW</div>
+      <button class="sound-toggle" id="soundToggle" aria-label="Toggle sound"><span class="sound-icon">♪</span><span>SOUND <b id="soundState">OFF</b></span></button>
+    </header>
+
+    <section class="game-frame" aria-label="Starling Hollow game">
+      <canvas id="game" aria-label="Dungeon game view"></canvas>
+      <div class="game-vignette"></div>
+      <div class="location"><span class="location-pin">✦</span><div><small>YOU ARE EXPLORING</small><strong id="locationName">MOSSGLASS CATACOMBS</strong></div></div>
+      <div class="floor-badge">FLOOR <b>01</b><span> / 03</span></div>
+
+      <section id="battleUI" class="battle-ui hidden" aria-live="polite">
+        <div class="battle-heading"><span class="eyebrow">A LITTLE TROUBLE</span><div id="battleTitle">A strange presence!</div></div>
+        <div class="enemy-card"><div class="enemy-name"><span class="enemy-spark">✦</span><span id="enemyName">Moss Mumbler</span><span class="enemy-level">LV 2</span></div><div class="enemy-hp-track"><span id="enemyHpBar"></span></div></div>
+        <div class="battle-log" id="battleLog">The air begins to shimmer...</div>
+        <div class="hero-status"><div class="hero-label"><span class="hero-dot"></span><b>JUNE</b><span>LV 03</span></div><div class="hp-line"><span class="hp-label">HP</span><div class="hp-track"><span id="hpBar"></span><i id="hpTrail"></i></div><strong id="hpText">32 / 32</strong></div><div class="meter-caption"><span>your heart is still beating</span><span>ROLLING HP</span></div></div>
+        <div class="action-wrap"><div class="action-label">WHAT WILL JUNE DO?</div><div class="action-grid" id="actionGrid">
+          <button class="action-btn primary" data-action="fight"><span class="action-symbol">✷</span><span><b>FIGHT</b><small>steady your aim</small></span><kbd>1</kbd></button>
+          <button class="action-btn" data-action="act"><span class="action-symbol">☼</span><span><b>ACT</b><small>try something kind</small></span><kbd>2</kbd></button>
+          <button class="action-btn" data-action="guard"><span class="action-symbol">◒</span><span><b>GUARD</b><small>catch your breath</small></span><kbd>3</kbd></button>
+          <button class="action-btn" data-action="item"><span class="action-symbol">✿</span><span><b>BAG</b><small id="snackCount">1 mooncake</small></span><kbd>4</kbd></button>
+        </div></div>
+        <div class="battle-hint">TIP: HP drains slowly after a hit — finish the fight before it reaches zero.</div>
+      </section>
+
+      <div id="toast" class="toast hidden"></div>
+      <div id="winCard" class="end-card hidden"><span class="end-icon">✧</span><small>THE HOLLOW GROWS QUIET</small><h2>Well done, June.</h2><p id="winMessage">The path ahead is yours.</p><button id="continueBtn" class="continue-btn">KEEP EXPLORING <span>→</span></button></div>
+      <div class="controls-hint" id="controlsHint"><span class="keycap">W</span><span class="keycap">A</span><span class="keycap">S</span><span class="keycap">D</span><span>or arrow keys to wander</span></div>
+    </section>
+
+    <section class="underbar">
+      <div class="quest"><span class="quest-icon">✧</span><div><small>YOUR LITTLE QUEST</small><strong id="questText">Find the source of the humming</strong></div></div>
+      <div class="progress"><div class="progress-copy"><span>CATACOMB FRIENDS</span><b><span id="defeatedCount">0</span><i> / 3</i></b></div><div class="progress-track"><span id="progressBar"></span></div></div>
+      <div class="help-note"><span>✦</span> Look for a way through.</div>
+    </section>
+
+    <section class="touch-controls" aria-label="Touch movement controls">
+      <div class="dpad"><button class="pad up" data-dir="up" aria-label="Move up">▲</button><button class="pad left" data-dir="left" aria-label="Move left">◀</button><button class="pad center" aria-label="Movement controls">✦</button><button class="pad right" data-dir="right" aria-label="Move right">▶</button><button class="pad down" data-dir="down" aria-label="Move down">▼</button></div>
+      <div class="touch-copy"><small>ON THE MOVE</small><strong>Tap a direction<br>to explore</strong></div>
+      <button class="interact-btn" id="interactBtn"><span>✧</span> LOOK</button>
+    </section>
+    <footer><span>✳ A SMALL GAME ABOUT BIG FEELINGS</span><span>MADE FOR WANDERING <b>·</b> 2026</span></footer>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
